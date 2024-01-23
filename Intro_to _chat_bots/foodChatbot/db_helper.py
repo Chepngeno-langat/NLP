@@ -4,7 +4,7 @@ global cnx
 cnx = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='############',
+    password='Chepngeno_0901',
     database='pandeyji_eatery'
 )
 
@@ -71,6 +71,14 @@ def insert_order_item(food_item, quantity, order_id):
 
             cnx.rollback()
             return -1
+
+def delete_order(order_id):
+    cursor = cnx.cursor()
+
+    query = f"DELETE FROM order_tracking WHERE order_id={order_id};"
+    cursor.execute(query)
+
+    cursor.close()
 
 def get_total_order_price(order_id):
     cursor = cnx.cursor()
